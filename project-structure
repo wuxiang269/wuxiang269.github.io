@@ -1,0 +1,11 @@
+personal-website/
+├── index.html          # 首页
+├── css/               
+│   ├── style.css      # 主样式
+│   └── responsive.css  # 响应式样式
+├── js/
+│   └── main.js        # 主要脚本
+├── images/            # 图片资源目录
+└── pages/             # 子页面
+    ├── portfolio.html # 作品集
+    └── contact.html   # 联系页面 

@@ -1,0 +1,24 @@
+/* 移动设备 */
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* 平板设备 */
+@media (max-width: 768px) {
+    .work-card {
+        margin-bottom: 2rem;
+    }
+}
+
+/* 大屏设备 */
+@media (min-width: 992px) {
+    .hero {
+        padding: 6rem 0;
+    }
+} 
