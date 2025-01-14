@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>后台管理 - 登录</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(76, 70, 182, 0.1));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <h2 class="text-center mb-4">后台管理</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label">GitHub Token</label>
+                    <input type="password" class="form-control" id="token" required>
+                    <div class="form-text">请输入您的GitHub Personal Access Token</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">登录</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html> 

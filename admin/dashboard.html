@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>后台管理 - 控制面板</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        .work-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <h4 class="mb-4">后台管理</h4>
+        <div class="list-group">
+            <a href="#works" class="list-group-item list-group-item-action active">作品管理</a>
+            <a href="#articles" class="list-group-item list-group-item-action">文章管理</a>
+            <a href="#settings" class="list-group-item list-group-item-action">网站设置</a>
+        </div>
+        <button class="btn btn-outline-danger w-100 mt-4" id="logoutBtn">退出登录</button>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="main-content">
+        <!-- 作品管理 -->
+        <div id="works" class="content-section">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>作品管理</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWorkModal">
+                    <i class="fas fa-plus"></i> 添加作品
+                </button>
+            </div>
+            <div id="worksList">
+                <!-- 作品列表将通过 JavaScript 动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加作品模态框 -->
+    <div class="modal fade" id="addWorkModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">添加作品</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addWorkForm">
+                        <div class="mb-3">
+                            <label class="form-label">标题</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">类型</label>
+                            <select class="form-select" name="type" required>
+                                <option value="image">图片</option>
+                                <option value="video">视频</option>
+                                <option value="article">文章</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">描述</label>
+                            <textarea class="form-control" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">图片/视频链接</label>
+                            <input type="url" class="form-control" name="url">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="saveWorkBtn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 
