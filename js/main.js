@@ -1,47 +1,49 @@
-/**
- * 作品数据
- * @type {Array<Object>}
- */
-const works = [
-    {
-        title: "项目一",
-        description: "项目描述...",
-        image: "images/work1.jpg",
-        link: "#"
-    },
-    {
-        title: "项目二",
-        description: "项目描述...",
-        image: "images/work2.jpg",
-        link: "#"
+// 初始化 AOS 动画库
+AOS.init({
+    duration: 1000,
+    once: true
+});
+
+// 导航栏滚动效果
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
-];
+});
 
-/**
- * 加载作品列表
- */
-function loadWorks() {
-    const worksContainer = document.querySelector('.featured-works .row');
-    if (!worksContainer) return;
-
-    works.forEach(work => {
-        const workCard = `
-            <div class="col-md-4 mb-4">
-                <div class="card work-card">
-                    <img src="${work.image}" class="card-img-top" alt="${work.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${work.title}</h5>
-                        <p class="card-text">${work.description}</p>
-                        <a href="${work.link}" class="btn btn-primary">查看详情</a>
-                    </div>
-                </div>
-            </div>
-        `;
-        worksContainer.innerHTML += workCard;
-    });
-}
-
-// 页面加载完成后执行
+// 作品筛选功能
 document.addEventListener('DOMContentLoaded', () => {
-    loadWorks();
+    const filterButtons = document.querySelectorAll('.works-filter button');
+    const works = document.querySelectorAll('.work-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 更新按钮状态
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // 筛选作品
+            const filter = button.getAttribute('data-filter');
+            works.forEach(work => {
+                if (filter === 'all' || work.getAttribute('data-type') === filter) {
+                    work.style.display = 'block';
+                } else {
+                    work.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 }); 
